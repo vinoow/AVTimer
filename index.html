@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Days Until Next 15th of the Month</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      background-color: #F9EDEB;
+      text-align: center;
+      margin-top: 100px;
+    }
+    
+    h1 {
+      font-size: 36px;
+      color: #C71585;
+    }
+    
+    p {
+      font-size: 24px;
+      color: #8B0000;
+      margin-top: 20px;
+    }
+    
+    .heart {
+      color: #FF69B4;
+    }
+  </style>
+</head>
+<body>
+  <h1><span class="heart">&#9825;</span> Days Until Next 15th of the Month <span class="heart">&#9825;</span></h1>
+  <p id="timer"></p>
+  
+  <script>
+    // Function to calculate the number of days until the next 15th of the month
+    function calculateDays() {
+      // Get the current date
+      var currentDate = new Date();
+      
+      // Calculate the next 15th of the month
+      var next15th = new Date(currentDate.getFullYear(), currentDate.getMonth(), 15);
+      
+      // If the current date is already the 15th or later, calculate the next month's 15th
+      if (currentDate.getDate() >= 15) {
+        next15th.setMonth(next15th.getMonth() + 1);
+      }
+      
+      // Calculate the difference in milliseconds
+      var difference = next15th - currentDate;
+      
+      // Convert milliseconds to days
+      var days = Math.ceil(difference / (1000 * 60 * 60 * 24));
+      
+      // Update the timer element with the number of days
+      document.getElementById('timer').innerHTML = days + ' days';
+    }
+    
+    // Call the calculateDays function when the page loads
+    window.onload = calculateDays;
+  </script>
+</body>
+</html>
